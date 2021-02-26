@@ -282,7 +282,7 @@
       inputOptions["suffix"] = inputOptions["postfix"];
     }
 
-    for (i = 0; i < FormatOptions.length; i += 1) {
+    for (i = 0; i < FormatOptions.length; i++) {
       optionName = FormatOptions[i];
       optionValue = inputOptions[optionName];
 
