@@ -62,8 +62,7 @@
   // Borrowed: http://stackoverflow.com/a/21323330/775265
   function toFixed(value, exp) {
     value = value.toString().split("e");
-    value = Math.round(+(value[0] + "e" + (value[1] ? +value[1] + exp : exp)));
-    value = value.toString().split("e");
+    value = Math.round(+(value[0] + "e" + (value[1] ? +value[1] + exp : exp))).toString().split("e");
     return (+(value[0] + "e" + (value[1] ? +value[1] - exp : -exp))).toFixed(exp);
   }
 
@@ -159,8 +158,7 @@
     }
 
     // Append the actual number.
-    output += inputBase;
-    output += inputDecimals;
+    output += inputBase + inputDecimals;
 
     // Apply the suffix.
     if (suffix) {
@@ -293,10 +291,9 @@
         if (optionName === "negative" && !filteredOptions.negativeBefore) {
           filteredOptions[optionName] = "-";
           // Don't set a default for mark when 'thousand' is set.
-        } else if (optionName === "mark" && filteredOptions.thousand !== ".") {
-          filteredOptions[optionName] = ".";
-        } else {
-          filteredOptions[optionName] = false;
+        }
+        else {
+          filteredOptions[optionName] = ((optionName === "mark" && filteredOptions.thousand !== ".")?".":false;
         }
 
         // Floating points in JS are stable up to 7 decimals.
